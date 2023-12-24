@@ -184,6 +184,7 @@ public class LimboImpl implements Limbo {
     JoinGame joinGame1194 = this.createJoinGamePacket(ProtocolVersion.MINECRAFT_1_19_4);
     JoinGame joinGame120 = this.createJoinGamePacket(ProtocolVersion.MINECRAFT_1_20);
     JoinGame joinGame1202 = this.createJoinGamePacket(ProtocolVersion.MINECRAFT_1_20_2);
+    JoinGame joinGame1203 = this.createJoinGamePacket(ProtocolVersion.MINECRAFT_1_20_3);
 
     this.joinPackets = this.plugin.createPreparedPacket()
         .prepare(legacyJoinGame, ProtocolVersion.MINIMUM_VERSION, ProtocolVersion.MINECRAFT_1_15_2)
@@ -193,7 +194,8 @@ public class LimboImpl implements Limbo {
         .prepare(joinGame1191, ProtocolVersion.MINECRAFT_1_19_1, ProtocolVersion.MINECRAFT_1_19_3)
         .prepare(joinGame1194, ProtocolVersion.MINECRAFT_1_19_4, ProtocolVersion.MINECRAFT_1_19_4)
         .prepare(joinGame120, ProtocolVersion.MINECRAFT_1_20)
-        .prepare(joinGame1202, ProtocolVersion.MINECRAFT_1_20_2);
+        .prepare(joinGame1202, ProtocolVersion.MINECRAFT_1_20_2)
+        .prepare(joinGame1203, ProtocolVersion.MINECRAFT_1_20_3);
 
     this.fastRejoinPackets = this.plugin.createPreparedPacket();
     this.createFastClientServerSwitch(legacyJoinGame, ProtocolVersion.MINECRAFT_1_7_2)
@@ -212,6 +214,8 @@ public class LimboImpl implements Limbo {
         .forEach(minecraftPacket -> this.fastRejoinPackets.prepare(minecraftPacket, ProtocolVersion.MINECRAFT_1_20));
     this.createFastClientServerSwitch(joinGame1202, ProtocolVersion.MINECRAFT_1_20_2)
         .forEach(minecraftPacket -> this.fastRejoinPackets.prepare(minecraftPacket, ProtocolVersion.MINECRAFT_1_20_2));
+    this.createFastClientServerSwitch(joinGame1203, ProtocolVersion.MINECRAFT_1_20_3)
+            .forEach(minecraftPacket -> this.fastRejoinPackets.prepare(minecraftPacket, ProtocolVersion.MINECRAFT_1_20_3));
 
     this.safeRejoinPackets = this.plugin.createPreparedPacket().prepare(this.createSafeClientServerSwitch(legacyJoinGame));
     this.postJoinPackets = this.plugin.createPreparedPacket();
