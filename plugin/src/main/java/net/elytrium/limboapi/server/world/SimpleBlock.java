@@ -268,8 +268,8 @@ public class SimpleBlock implements VirtualBlock {
   }
 
   private static short transformID(String modernID, Set<String> properties) {
-    if (Objects.equals(modernID, "grass")) {
-      modernID = "short_grass";
+    if (Objects.equals(modernID, "minecraft:grass")) {
+      modernID = "minecraft:short_grass";
     }
     Map<Set<String>, Short> blockInfo = MODERN_BLOCK_STATE_STRING_MAP.get(modernID);
 
