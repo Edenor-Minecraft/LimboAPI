@@ -60,7 +60,14 @@ public class SimpleBlock implements VirtualBlock {
         LinkedTreeMap.class
     );
 
-    blocks.forEach((modernId, protocolId) -> MODERN_BLOCK_STRING_MAP.put(modernId, Short.valueOf(protocolId)));
+    blocks.forEach((modernId, protocolId) -> {
+      if (Objects.equals(modernId, "minecraft:short_grass")) {
+        MODERN_BLOCK_STRING_MAP.put(modernId, Short.valueOf(protocolId));
+        MODERN_BLOCK_STRING_MAP.put("minecraft:grass", Short.valueOf(protocolId));
+      } else {
+        MODERN_BLOCK_STRING_MAP.put(modernId, Short.valueOf(protocolId));
+      }
+    });
 
     LinkedTreeMap<String, LinkedTreeMap<String, String>> blockVersionMapping = GSON.fromJson(
         new InputStreamReader(
