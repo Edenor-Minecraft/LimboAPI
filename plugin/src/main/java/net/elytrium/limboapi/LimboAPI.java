@@ -356,6 +356,9 @@ public class LimboAPI implements LimboFactory {
 
   @Override
   public VirtualBlock createSimpleBlock(boolean solid, boolean air, boolean motionBlocking, String modernID, Map<String, String> properties) {
+    if (Objects.equals(modernID, "grass")) {
+      modernID = "short_grass";
+    }
     return new SimpleBlock(solid, air, motionBlocking, modernID, properties);
   }
 

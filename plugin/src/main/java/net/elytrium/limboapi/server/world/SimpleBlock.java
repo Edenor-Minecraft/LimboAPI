@@ -303,6 +303,9 @@ public class SimpleBlock implements VirtualBlock {
 
   @NonNull
   public static SimpleBlock solid(boolean motionBlocking, String modernID, short id) {
+    if (Objects.equals(modernID, "grass")) {
+      modernID = "short_grass";
+    }
     return new SimpleBlock(true, false, motionBlocking, modernID, id);
   }
 
@@ -323,6 +326,9 @@ public class SimpleBlock implements VirtualBlock {
 
   @NonNull
   public static SimpleBlock nonSolid(boolean motionBlocking, String modernID, short id) {
+    if (Objects.equals(modernID, "grass")) {
+      modernID = "short_grass";
+    }
     return new SimpleBlock(false, false, motionBlocking, modernID, id);
   }
 
